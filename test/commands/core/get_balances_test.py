@@ -50,6 +50,8 @@ class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
       'threshold': 80,
     }
 
+    # "def _filter()" below is going to be defined in 
+    # # site-packages/filters/test.py
     filter_ = self._filter(request)
     # print('type(filter_)002: ', type(filter_))
     # # <class 'filters.handlers.FilterRunner'>
@@ -57,8 +59,12 @@ class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
     # print('filter_ 002: ', filter_)
     # # GetBalancesRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Required(allow_none=False) | Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), threshold=FilterChain(Type(int, allow_subclass=True) | Min(0, exclusive=False) | Max(100, exclusive=False) | Optional(default=100)))))
 
-
-    self.assertFilterPasses(filter_)
+    # the function below (assertFilterPasses()) is going to be defined in 
+    # # site-packages/filters/test.py
+    # # 
+    # # the function below Asserts that the FilterRunner returns the specified value,
+    # # # without errors.
+    self.assertFilterPasses(filter_) #assertFilterPasses()
     self.assertDictEqual(filter_.cleaned_data, request)
 
   def test_pass_compatible_types(self):
@@ -310,6 +316,11 @@ class GetBalancesCommandTestCase(TestCase):
     """
     Verify that the command is wired up correctly.
     """
+
+    # just a comment of the line below
+    # # it is possible to set the error which is going to be shown when
+    # # the test is NOT fulfilled... Like this next_one
+    # # # self.assertIsInstance(dict001, dict, 'First argument is not a dictionary')
     self.assertIsInstance(
       Iota(self.adapter).getBalances,
       GetBalancesCommand,
