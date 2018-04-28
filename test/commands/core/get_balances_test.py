@@ -2,6 +2,7 @@
 from __future__ import absolute_import, division, print_function, \
   unicode_literals
 
+# TestCase is going to be defined in: Python_Path\Lib\unittest\case.py
 from unittest import TestCase
 
 # the file below is going to be in:
@@ -19,6 +20,8 @@ from iota.filters import Trytes
 # just a simple reminder for the line below:
 # # "BaseFilterTestCase" is set in 
 # # # site-packages/filters/test.py
+#
+# "BaseFilterTestCase" is going to extend from "TestCase"
 class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
   filter_type = GetBalancesCommand(MockAdapter()).get_request_filter
   # print('type(filter_type)001: ', type(filter_type))
@@ -29,6 +32,8 @@ class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
 
   # noinspection SpellCheckingInspection
   def setUp(self):
+    # U should know this already, due the line below
+    # # this is going to run "def setUp()" which is defined in "BaseFilterTestCase"
     super(GetBalancesRequestFilterTestCase, self).setUp()
 
     # Define a few valid values that we can reuse across tests.
@@ -53,6 +58,9 @@ class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
       'threshold': 80,
     }
 
+    # once again, iota is going to use filters/test.py and "unittest" for testing
+    #
+    # 
     # "def _filter()" below is going to be defined in 
     # # site-packages/filters/test.py
     filter_ = self._filter(request)
