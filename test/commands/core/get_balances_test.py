@@ -16,6 +16,9 @@ from iota.commands.core.get_balances import GetBalancesCommand
 from iota.filters import Trytes
 
 
+# just a simple reminder for the line below:
+# # "BaseFilterTestCase" is set in 
+# # # site-packages/filters/test.py
 class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
   filter_type = GetBalancesCommand(MockAdapter()).get_request_filter
   # print('type(filter_type)001: ', type(filter_type))
@@ -308,6 +311,8 @@ class GetBalancesResponseFilterTestCase(BaseFilterTestCase):
 
 class GetBalancesCommandTestCase(TestCase):
   def setUp(self):
+    # the line below is going to run the "def setup()" which is set in
+    # # 
     super(GetBalancesCommandTestCase, self).setUp()
 
     self.adapter = MockAdapter()
@@ -321,6 +326,11 @@ class GetBalancesCommandTestCase(TestCase):
     # # it is possible to set the error which is going to be shown when
     # # the test is NOT fulfilled... Like this next_one
     # # # self.assertIsInstance(dict001, dict, 'First argument is not a dictionary')
+    # #
+    # it is possible to do the same as below with this next_command
+    # # self.assertTrue(isinstance(obj001, cls))
+    # # just remember, with the method below, it is possible to print an error_msg when
+    # # # the assertion is false
     self.assertIsInstance(
       Iota(self.adapter).getBalances,
       GetBalancesCommand,
