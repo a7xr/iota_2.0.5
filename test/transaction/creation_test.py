@@ -116,7 +116,7 @@ class ProposedBundleTestCase(TestCase):
     # # RBWAQBWA9999999999999999999
     # # # This is related to the param which is given to: tag = Tag.from_unicode('H2G2')
 
-
+    
     self.bundle.add_transaction(ProposedTransaction(
       address = address,
       tag     = tag,
