@@ -12,14 +12,24 @@ from sha3 import keccak_384
 from iota.crypto.kerl import Kerl
 from iota.crypto.kerl.conv import convertToBytes, convertToTrits, \
   trits_to_trytes, trytes_to_trits
-
+from pack001 import *
 
 class TestKerl(TestCase):
     def test_correct_hash_function(self):
         k = keccak_384()
+        print_var_type_n_val(var001 = k, pointer = "#YTRFGDFGHDFGHFDGH")#YTRFGDFGHDFGHFDGH
+# Value: 
+# # <_pysha3.keccak_384 object at 0x0000018FAA5536F8>
+
+# Type: <class '_pysha3.keccak_384'>
         # print('k001: ', k)
         # # <_pysha3.keccak_384 object at 0x0000028B370AF600>
         k.update('Message'.encode('utf-8'))
+        print_var_type_n_val(var001 = k, pointer = "#SDFGHytre2345cd345")#SDFGHytre2345cd345
+# Value: 
+# # <_pysha3.keccak_384 object at 0x0000018FAA5536F8>
+
+# Type: <class '_pysha3.keccak_384'>
         # print('k_update: ', k)
         # # <_pysha3.keccak_384 object at 0x0000028B370AF600>
 
@@ -38,6 +48,11 @@ class TestKerl(TestCase):
         )
 
         trits = trytes_to_trits(inp)
+        print_var_type_n_val(var001 = trits, pointer = "#SDFGHhgfdAZER1234765555")#SDFGHhgfdAZER1234765555
+# Value: 
+# # [-1, -1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, -1, 0, -1, -1, -1, -1, 0, 1, -1, 1, 0, -1, -1, 0, 1, 1, 1, -1, 1, 0, 0, 1, 0, 0, -1, 0, 1, 1, -1, 1, 1, 0, -1, -1, 1, 0, -1, 1, 0, -1, -1, 0, -1, 1, -1, -1, 0, 0, 0, 1, -1, -1, -1, 0, -1, 0, -1, 1, -1, -1, -1, 1, 0, 0, -1, 1, 0, 0, 0, 1, 1, 0, 1, -1, -1, 1, 1, 1, -1, 0, 1, -1, 0, 1, -1, -1, 1, -1, -1, -1, 0, 1, -1, 1, 1, 1, -1, -1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, -1, 1, 1, -1, 1, 1, 0, 1, -1, -1, 1, 0, 0, 1, 0, 1, -1, 1, -1, 0, 0, 0, 0, 1, 1, 1, 0, 1, -1, 1, 1, 0, 1, 1, -1, -1, -1, -1, 0, -1, 1, -1, 0, 0, -1, 0, 1, 1, 1, 1, 1, 1, 1, -1, -1, 0, -1, 0, 0, 0, 1, -1, 1, -1, 0, 0, 1, -1, 1, 0, -1, -1, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, -1, -1, -1, 0, -1, -1, 1, 1, 1, -1, -1, 1, -1, -1, 0, 1, -1, -1, -1, -1, -1, 0, 1, 1, 1, -1, 0, 1, 1, 0, 0, -1, -1, -1, -1, 1, 0, -1, 0, 1]
+
+# Type: <class 'list'>
         # print('trits001: ', trits)
         # # [-1, -1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, -1, 0, -1, -1, -1, -1, 0, 1, -1, 1, 0, -1, -1, 0, 1, 1, 1, -1, 1, 0, 0, 1, 0, 0, -1, 0, 1, 1, -1, 1, 1, 0, -1, -1, 1, 0, -1, 1, 0, -1, -1, 0, -1, 1, -1, -1, 0, 0, 0, 1, -1, -1, -1, 0, -1, 0, -1, 1, -1, -1, -1, 1, 0, 0, -1, 1, 0, 0, 0, 1, 1, 0, 1, -1, -1, 1, 1, 1, -1, 0, 1, -1, 0, 1, -1, -1, 1, -1, -1, -1, 0, 1, -1, 1, 1, 1, -1, -1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, -1, 1, 1, -1, 1, 1, 0, 1, -1, -1, 1, 0, 0, 1, 0, 1, -1, 1, -1, 0, 0, 0, 0, 1, 1, 1, 0, 1, -1, 1, 1, 0, 1, 1, -1, -1, -1, -1, 0, -1, 1, -1, 0, 0, -1, 0, 1, 1, 1, 1, 1, 1, 1, -1, -1, 0, -1, 0, 0, 0, 1, -1, 1, -1, 0, 0, 1, -1, 1, 0, -1, -1, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, -1, -1, -1, 0, -1, -1, 1, 1, 1, -1, -1, 1, -1, -1, 0, 1, -1, -1, -1, -1, -1, 0, 1, 1, 1, -1, 0, 1, 1, 0, 0, -1, -1, -1, -1, 1, 0, -1, 0, 1]
         kerl = Kerl()
@@ -50,6 +65,9 @@ class TestKerl(TestCase):
         # # <iota.crypto.kerl.pykerl.Kerl object at 0x000002740CFA5BA8>
 
         trytes_out = trits_to_trytes(trits_out)
+        print_var_type_n_val(var001 = trytes_out, pointer = "#QSEZEzZERTYsder23434")#QSEZEzZERTYsder23434
+# Value: EJEAOOZYSAWFPZQESYDHZCGYNSTWXUMVJOVDWUNZJXDGWCLUFGIMZRMGCAZGKNPLBRLGUNYWKLJTYEAQX
+# Type: <class 'str'>
 
         # noinspection SpellCheckingInspection
         self.assertEqual(
@@ -67,14 +85,36 @@ class TestKerl(TestCase):
         )
 
         trits = trytes_to_trits(inp)
+        print_var_type_n_val(var001 = trits, pointer = "#XCVBNbvcSDF23458765")#XCVBNbvcSDF23458765
+# Value: 
+# # [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, -1, 0, -1, -1, -1, -1, 0, 1, -1, 1, 0, -1, -1, 0, 1, 1, 1, -1, 1, 0, 0, 1, 0, 0, -1, 0, 1, 1, -1, 1, 1, 0, -1, -1, 1, 0, -1, 1, 0, -1, -1, 0, -1, 1, -1, -1, 0, 0, 0, 1, -1, -1, -1, 0, -1, 0, -1, 1, -1, -1, -1, 1, 0, 0, -1, 1, 0, 0, 0, 1, 1, 0, 1, -1, -1, 1, 1, 1, -1, 0, 1, -1, 0, 1, -1, -1, 1, -1, -1, -1, 0, 1, -1, 1, 1, 1, -1, -1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, -1, 1, 1, -1, 1, 1, 0, 1, -1, -1, 1, 0, 0, 1, 0, 1, -1, 1, -1, 0, 0, 0, 0, 1, 1, 1, 0, 1, -1, 1, 1, 0, 1, 1, -1, -1, -1, -1, 0, -1, 1, -1, 0, 0, -1, 0, 1, 1, 1, 1, 1, 1, 1, -1, -1, 0, -1, 0, 0, 0, 1, -1, 1, -1, 0, 0, 1, -1, 1, 0, -1, -1, -1, 0, 1, 0, 0, 0, 0, 1, 0, -1, -1, -1, -1, 0, -1, -1, 1, 1, 1, -1, -1, 1, -1, -1, 0, 1, -1, -1, -1, -1, -1, 0, 1, 1, 1, -1, 0, 1, 1, 0, 0, -1, -1, -1, -1, 1, 0, -1, 0, 1]
+
+# Type: <class 'list'>
 
         kerl = Kerl()
+        print_var_type_n_val(var001 = kerl, pointer = "#SDFG345tredff")#SDFG345tredff
+# Value: 
+# # <iota.crypto.kerl.pykerl.Kerl object at 0x0000018FAA7C6780>
+
+# Type: <class 'iota.crypto.kerl.pykerl.Kerl'>
         kerl.absorb(trits)
+        print_var_type_n_val(var001 = kerl, pointer = "#ERERdfgfdrtre2345665777")#ERERdfgfdrtre2345665777
+# Value: 
+# # <iota.crypto.kerl.pykerl.Kerl object at 0x0000018FAA7C6780>
+
+# Type: <class 'iota.crypto.kerl.pykerl.Kerl'>
         trits_out = []
         kerl.squeeze(trits_out, length=486)
+        print_var_type_n_val(var001 = kerl, pointer = "#2345gDFRER")#2345gDFRER
+# Value: 
+# # <iota.crypto.kerl.pykerl.Kerl object at 0x0000018FAA7C6780>
+
+# Type: <class 'iota.crypto.kerl.pykerl.Kerl'>
 
         trytes_out = trits_to_trytes(trits_out)
-
+        print_var_type_n_val(var001 = trytes_out, pointer = "#23458765SDFfffFGH")#23458765SDFfffFGH
+# Value: G9JYBOMPUXHYHKSNRNMMSSZCSHOFYOYNZRSZMAAYWDYEIMVVOGKPJBVBM9TDPULSFUNMTVXRKFIDOHUXXVYDLFSZYZTWQYTE9SPYYWYTXJYQ9IFGYOLZXWZBKWZN9QOOTBQMWMUBLEWUEEASRHRTNIQWJQNDWRYLCA
+# Type: <class 'str'>
         # noinspection SpellCheckingInspection
         self.assertEqual(
           trytes_out,

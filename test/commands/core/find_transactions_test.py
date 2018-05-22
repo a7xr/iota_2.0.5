@@ -13,14 +13,16 @@ from iota.adapter import MockAdapter
 from iota.commands.core.find_transactions import FindTransactionsCommand, \
   FindTransactionsRequestFilter
 from iota.filters import Trytes
+from pack001 import *
 
 
 class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
   filter_type = FindTransactionsCommand(MockAdapter()).get_request_filter 
-    # print("type(filter_type)1: ", type(filter_type))
-    # # <class 'method'>
-    # print('filter_type1: ', filter_type)
-    # # <bound method FindTransactionsCommand.get_request_filter of <iota.commands.core.find_transactions.FindTransactionsCommand object at 0x000002D8BC1B8898>>
+  print_var_type_n_val(var001 = filter_type, pointer = "#ZERTsdfgrd1234jh")#ZERTsdfgrd1234jh
+# Value: 
+# # <bound method FindTransactionsCommand.get_request_filter of <iota.commands.core.find_transactions.FindTransactionsCommand object at 0x0000021C318C8A58>>
+
+# Type: <class 'method'>
   skip_value_check = True
 
   # noinspection SpellCheckingInspection
@@ -76,33 +78,22 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
           ), 
       ], 
     }
-      # print("type(request)2: ", type(request))
-      # # <class 'dict'>
-      # print('request2: ', request)
-      # # {
-      # # # 'bundles': [
-      # # # # 'RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999', 
-      # # # # 'CCPCBDVC9DTCEAKDXC9D9DEARCWCPCBDVCTCEAHDWCTCEAKDCDFD9DSCSA99999999999999999999999'], 
-      # # # 'addresses': [
-      # # # # 'RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999', 
-      # # # # 'CCPCBDVC9DTCEAKDXC9D9DEARCWCPCBDVCTCEAHDWCTCEAKDCDFD9DSCSA99999999999999999999999'
-      # # # ], 
-      # # # 'tags': [
-      # # # # 'RBTC9D9DCDQAEASBYBCCKBFA999', 
-      # # # # '999999999999999999999999999'
-      # # # ], 'approvees': [
-      # # # # 'RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999', 
-      # # # # '999999999999999999999999999999999999999999999999999999999999999999999999999999999'
-      # # # ]
-      # # }
+    print_var_type_n_val(var001 = request, pointer = "#XXXXCVBVCZZZzzzer12345")#XXXXCVBVCZZZzzzer12345
+# Value: 
+# # {'bundles': ['RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999', 'CCPCBDVC9DTCEAKDXC9D9DEARCWCPCBDVCTCEAHDWCTCEAKDCDFD9DSCSA99999999999999999999999'], 'addresses': ['RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999', 'CCPCBDVC9DTCEAKDXC9D9DEARCWCPCBDVCTCEAHDWCTCEAKDCDFD9DSCSA99999999999999999999999'], 'tags': ['RBTC9D9DCDQAEASBYBCCKBFA999', '999999999999999999999999999'], 'approvees': ['RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999', '999999999999999999999999999999999999999999999999999999999999999999999999999999999']}
+
+# Type: <class 'dict'>
     filter_ = self._filter(request) #here001
-      # print("type(filter_)3: ", type(filter_))
-      # # <class 'filters.handlers.FilterRunner'>
-      # print('filter_3: ', filter_)
-      # # FindTransactionsRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), approvees=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), bundles=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), tags=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))))))
-      # # 
+    print_var_type_n_val(var001 = filter_, pointer = "#WXCVRDFGTFGHV")#WXCVRDFGTFGHV
+# Value: 
+# # FindTransactionsRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), approvees=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), bundles=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), tags=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))))))
+
+# Type: <class 'filters.handlers.FilterRunner'>
     self.assertFilterPasses(filter_)
     self.assertDictEqual(filter_.cleaned_data, request)
+      # print('filter_.cleaned_data: ', filter_.cleaned_data)
+      # # {'tags': ['RBTC9D9DCDQAEASBYBCCKBFA999', '999999999999999999999999999']}
+
 
   def test_pass_compatible_types(self):
     """
@@ -110,7 +101,11 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
     types.
     """
     filter_ = self._filter({'bundles': [self.trytes1.encode('ascii'), TransactionHash(self.trytes2), ], 'addresses': [self.trytes1.encode('ascii'), Address(self.trytes2), ], 'tags': [self.trytes1.encode('ascii'), Tag(self.trytes3), ], 'approvees': [self.trytes1.encode('ascii'), TransactionHash(self.trytes3), ], })
+    print_var_type_n_val(var001 = filter_, pointer = "#WXCVBFGrtrer12349999")#WXCVBFGrtrer12349999
+# Value: 
+# # FindTransactionsRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), approvees=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), bundles=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), tags=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))))))
 
+# Type: <class 'filters.handlers.FilterRunner'>
     self.assertFilterPasses(filter_)
     # to_find: where is the command above is being created
     self.assertDictEqual(
@@ -144,25 +139,29 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
     """
     The request only includes bundles.
     """
-      # print("self.trytes1: ", self.trytes1)
-      # # RBTC9D9DCDQAEASBYBCCKBFA
-      # print("type(TransactionHash(self.trytes1)): ", type(TransactionHash(self.trytes1)))
-      # # <class 'iota.transaction.types.TransactionHash'>
-      # print("TransactionHash(self.trytes1): ", TransactionHash(self.trytes1))
-      # # RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999
     request = {'bundles': [
       TransactionHash(self.trytes1), 
-        # print("type(TransactionHash(self.trytes1)): ", type(TransactionHash(self.trytes1)))
-        # # <class 'iota.transaction.types.TransactionHash'>
-        # print("TransactionHash(self.trytes1): ", TransactionHash(self.trytes1))
-        # # RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999
       TransactionHash(self.trytes2), 
     ], }
 
     filter_ = self._filter(request)
-    # you should know about this already, #here001
+    print_var_type_n_val(var001 = filter_, pointer = "#5555ttyhgffbbvcvbaazezZZZSSS")#5555ttyhgffbbvcvbaazezZZZSSS
+# Value: 
+# # FindTransactionsRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), approvees=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), bundles=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))), tags=FilterChain(Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | Trytes() | Unicode(encoding='ascii')))))))
+
+# Type: <class 'filters.handlers.FilterRunner'>
 
     self.assertFilterPasses(filter_)
+
+    print_var_type_n_val(var001 = text_type(TransactionHash(self.trytes1)), pointer = "#4543ERTGF555666aaaqsCE")#4543ERTGF555666aaaqsCE
+# Value: RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999
+# Type: <class 'str'>
+    print_var_type_n_val(var001 = TransactionHash(self.trytes1), pointer = "#XCEDFGtrefg654")#XCEDFGtrefg654
+# Value: RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999
+# Type: <class 'iota.transaction.types.TransactionHash'>
+    print_var_type_n_val(var001 = self.trytes1, pointer = "#XCVDFFERRRTdd4544")#XCVDFFERRRTdd4544
+# Value: RBTC9D9DCDQAEASBYBCCKBFA
+# Type: <class 'str'>
 
     self.assertDictEqual(
       filter_.cleaned_data,
@@ -170,14 +169,6 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
       {
         'bundles': [
           text_type(TransactionHash(self.trytes1)),
-            # print("type(TransactionHash(self.trytes1)): ", type(TransactionHash(self.trytes1)))
-            # # <class 'iota.transaction.types.TransactionHash'>
-            # print("TransactionHash(self.trytes1): ", TransactionHash(self.trytes1))
-            # # RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999
-            # print("type(text_type(TransactionHash(self.trytes1))): ", type(text_type(TransactionHash(self.trytes1))))
-            # # <class 'str'>
-            # print("text_type(TransactionHash(self.trytes1)): ", text_type(TransactionHash(self.trytes1)))
-            # # RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999          
           text_type(TransactionHash(self.trytes2)),
         ],
 
@@ -193,9 +184,15 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
     """
     The request only includes addresses.
     """
+
+
     request = {
       'addresses': [
         Address(self.trytes1),
+          # print("type(Address(self.trytes1)): ", type(Address(self.trytes1)))
+          # # <class 'iota.types.Address'>
+          # print('Address(self.trytes1): ', Address(self.trytes1))
+          # # RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999
         Address(self.trytes2),
       ],
     }
@@ -209,6 +206,10 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
       {
         'addresses': [
           text_type(Address(self.trytes1)),
+            # print("type(Address(self.trytes1)): ", type(Address(self.trytes1)))
+            # # <class 'iota.types.Address'>
+            # print('Address(self.trytes1): ', Address(self.trytes1))
+            # # RBTC9D9DCDQAEASBYBCCKBFA999999999999999999999999999999999999999999999999999999999
           text_type(Address(self.trytes2)),
         ],
 
@@ -224,6 +225,10 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
     """
     The request only includes tags.
     """
+    # print("type(Tag(self.trytes1)): ", type(Tag(self.trytes1)))
+    # # <class 'iota.types.Tag'>
+    # print('Tag(self.trytes1): ', Tag(self.trytes1))
+    # # RBTC9D9DCDQAEASBYBCCKBFA999
     request = {
       'tags': [
         Tag(self.trytes1),
@@ -232,6 +237,8 @@ class FindTransactionsRequestFilterTestCase(BaseFilterTestCase):
     }
 
     filter_ = self._filter(request)
+      # print('filter_.cleaned_data: ', filter_.cleaned_data)
+      # # {'tags': ['RBTC9D9DCDQAEASBYBCCKBFA999', '999999999999999999999999999']}
 
     self.assertFilterPasses(filter_)
     self.assertDictEqual(

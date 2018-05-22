@@ -32,6 +32,7 @@ class CurlTestCase(TestCase):
     )
 
     trits = TryteString(input_).as_trits()
+    
 
     curl = Curl()
     curl.absorb(trits)

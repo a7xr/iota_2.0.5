@@ -2,6 +2,8 @@
 from __future__ import absolute_import, division, print_function, \
   unicode_literals
 
+from pack001 import *
+
 # TestCase is going to be defined in: Python_Path\Lib\unittest\case.py
 from unittest import TestCase
 
@@ -64,12 +66,11 @@ class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
     # "def _filter()" below is going to be defined in 
     # # site-packages/filters/test.py
     filter_ = self._filter(request)
-    # print('type(filter_)002: ', type(filter_))
-    # # <class 'filters.handlers.FilterRunner'>
-    # # # FilterRunner is going to be defined in 
-    # print('filter_ 002: ', filter_)
-    # # GetBalancesRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Required(allow_none=False) | Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), threshold=FilterChain(Type(int, allow_subclass=True) | Min(0, exclusive=False) | Max(100, exclusive=False) | Optional(default=100)))))
+    print_var_type_n_val(var001 = filter_, pointer = "#XCVBFFbvvbf234")#XCVBFFbvvbf234
+# Value: 
+# # GetBalancesRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Required(allow_none=False) | Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), threshold=FilterChain(Type(int, allow_subclass=True) | Min(0, exclusive=False) | Max(100, exclusive=False) | Optional(default=100)))))
 
+# Type: <class 'filters.handlers.FilterRunner'>
     # the function below (assertFilterPasses()) is going to be defined in 
     # # site-packages/filters/test.py
     # # 
@@ -93,6 +94,16 @@ class GetBalancesRequestFilterTestCase(BaseFilterTestCase):
     }
 
     filter_ = self._filter(request)
+    print_var_type_n_val(var001 = request, pointer = "#EDFEsdfr345")#EDFEsdfr345
+# Value: 
+# # {'addresses': [Address(b'TESTVALUE9DONTUSEINPRODUCTION99999EKJZZTSOGJOUNVEWLDPKGTGAOIZIPMGBLHC9LMQNHLGXGYX'), bytearray(b'TESTVALUE9DONTUSEINPRODUCTION99999FDCDTZZWLL9MYGUTLSYVSIFJ9NGALTRMCQVIIOVEQOITYTE')], 'threshold': 80}
+
+# Type: <class 'dict'>
+    print_var_type_n_val(var001 = filter_, pointer = "#XCVBFFbvvbf234")#XCVBFFbvvbf234
+# Value: 
+# # GetBalancesRequestFilter(FilterChain(Type(Mapping, allow_subclass=True) | FilterMapper(addresses=FilterChain(Required(allow_none=False) | Array(Sequence, allow_subclass=True) | FilterRepeater(FilterChain(Required(allow_none=False) | AddressNoChecksum() | Unicode(encoding='ascii')))), threshold=FilterChain(Type(int, allow_subclass=True) | Min(0, exclusive=False) | Max(100, exclusive=False) | Optional(default=100)))))
+
+# Type: <class 'filters.handlers.FilterRunner'>
 
     self.assertFilterPasses(filter_)
     self.assertDictEqual(
